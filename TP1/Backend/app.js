@@ -86,6 +86,21 @@ app.put('/users/:id', (req, res) => {
   });
 });
 
+// Route pour effacer un utilisateur spécifique par ID
+app.delete('/users/:id', (req, res) => {
+  const userId = req.params.id;
+
+  connection.query('DELETE FROM users WHERE id = ?', [userId], (err, result) => {
+    if (err) {
+      console.error('Erreur lors de l\'exécution de la requête:', err.message);
+      res.status(500).json({ message: 'Erreur lors de la suppression de l\'utilisateur' });
+    } else if (result.affectedRows > 0) {
+      res.json({ message: 'Utilisateur supprimé avec succès' });
+    } else {
+      res.status(404).json({ message: 'Utilisateur non trouvé' });
+    }
+  });
+});
 
 //Cela permet d'utiliser cet objet app dans d'autres fichiers de votre application
 module.exports = app ;
