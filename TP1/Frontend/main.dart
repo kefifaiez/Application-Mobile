@@ -177,7 +177,7 @@ class _UsersPageState extends State<UsersPage> {
     super.initState();
     getUsers(); // Partie 25: Appel de la fonction pour récupérer la liste des utilisateurs lors de l'initialisation de la page
   }
-
+//interface graphique utilisateur
   @override
   Widget build(BuildContext context) {
     return Scaffold(
